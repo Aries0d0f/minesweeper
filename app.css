@@ -64,6 +64,51 @@ body {
   content: '3';
 }
 
+.playground .block.type-4 {
+  background-color: #AAAAAA;
+  color: #CC0000;
+}
+
+.playground .block.type-4::before {
+  content: '4';
+}
+
+.playground .block.type-5 {
+  background-color: #AAAAAA;
+  color: #AA0000;
+}
+
+.playground .block.type-5::before {
+  content: '5';
+}
+
+.playground .block.type-6 {
+  background-color: #AAAAAA;
+  color: #990000;
+}
+
+.playground .block.type-6::before {
+  content: '6';
+}
+
+.playground .block.type-7 {
+  background-color: #AAAAAA;
+  color: #770000;
+}
+
+.playground .block.type-7::before {
+  content: '7';
+}
+
+.playground .block.type-8 {
+  background-color: #AAAAAA;
+  color: #550000;
+}
+
+.playground .block.type-8::before {
+  content: '8';
+}
+
 .playground .block.type-boom {
   color: #FFFFFF;
   background-color: #FF0000;
