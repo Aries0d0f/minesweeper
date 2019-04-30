@@ -60,9 +60,9 @@ class Game extends Playground {
         if (this.init && ele.type === 'BOOM') {
           this.blockList[ele.id].type = 'NORMAL'
           this.blockList[this.blockList.filter(ele => (ele.type === 'NORMAL'))[Math.floor(Math.random() * (this.width * this.height - this.numberOfBoom))].id].type = 'BOOM'
-          this.init = false
         }
-
+        
+        this.init = false
         this.openBlock(ele.id)
 
         if (ele.opened && ele.nearbyBooms === this.scanMark(ele.id) && ele.nearbyBooms > 0)
