@@ -118,16 +118,16 @@ body {
   background-color: #FF0000;
 }
 
+.playground .block.type-mark::before {
+  content: '🚩';
+}
+
 .playground .block.type-boom::before {
   content: '💣';
 }
 
 .playground .block.type-stepon::before {
   content: '🎇';
-}
-
-.playground .block.type-mark::before {
-  content: '🚩';
 }
 
 .gameover,
