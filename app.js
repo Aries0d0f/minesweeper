@@ -64,6 +64,9 @@ class Game extends Playground {
         }
 
         this.openBlock(ele.id)
+
+        if (ele.opened && ele.nearbyBooms === this.scanMark(ele.id) && ele.nearbyBooms > 0)
+          this.quickOpenFlagRange(ele.id)
       })
     })
   }
@@ -127,6 +130,31 @@ class Game extends Playground {
 
     if (this.checkStatus())
       this.win()
+  }
+
+  scanMark(id) {
+    let target = this.blockList[id]
+    let marks = 0
+
+    for (let i = target.col - 1; i <= target.col + 1; i++) {
+      for (let j = target.row - 1; j <= target.row + 1; j++) {
+        if ((i >= 0 && i < this.width) && (j >= 0 && j < this.height) && this.blockList[j * this.width + i].marked)
+          marks++
+      }
+    }
+
+    return marks
+  }
+
+  quickOpenFlagRange(id) {
+    let target = this.blockList[id]
+
+    for (let i = target.col - 1; i <= target.col + 1; i++) {
+      for (let j = target.row - 1; j <= target.row + 1; j++) {
+        if ((i >= 0 && i < this.width) && (j >= 0 && j < this.height) && !this.blockList[j * this.width + i].marked)
+          this.openBlock(this.blockList[j * this.width + i].id)
+      }
+    }
   }
 
   checkStatus() {
