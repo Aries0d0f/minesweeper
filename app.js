@@ -82,7 +82,8 @@ class Game extends Playground {
           document.querySelector(`#block-${target.id}`).classList.add(`type-${target.nearbyBooms}`)
           break
         case 'BOOM':
-          document.querySelector(`#block-${target.id}`).classList.add(`type-boom`)
+          document.querySelector(`#block-${target.id}`).classList.add('type-boom')
+          document.querySelector(`#block-${target.id}`).classList.add('type-stepon')
           this.gameOver()
           break
       }
@@ -163,7 +164,7 @@ class Game extends Playground {
 
   gameOver() {
     this.blockList.filter(ele => ele.type === 'BOOM').forEach(ele => {
-      this.openBlock(ele.id)
+      document.querySelector(`#block-${ele.id}`).classList.add('type-boom')
     })
     clearInterval(this.timmer)
     document.querySelector('.gameover').classList.remove('hide')

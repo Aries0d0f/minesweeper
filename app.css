@@ -110,7 +110,11 @@ body {
 }
 
 .playground .block.type-boom {
-  color: #FFFFFF;
+  color:  #FF0000;
+}
+
+.playground .block.type-stepon {
+  color: #FFFFFF !important;
   background-color: #FF0000;
 }
 
