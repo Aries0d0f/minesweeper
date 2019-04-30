@@ -119,11 +119,15 @@ body {
 }
 
 .playground .block.type-boom::before {
-  content: 'X';
+  content: '💣';
+}
+
+.playground .block.type-stepon::before {
+  content: '🎇';
 }
 
 .playground .block.type-mark::before {
-  content: 'O';
+  content: '🚩';
 }
 
 .gameover,
