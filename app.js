@@ -20,7 +20,6 @@ class Block {
     this.col = col
     this.row = row
     this.id = id
-    this.relate = []
     this.marked = false
     this.opened = false
   }
