@@ -29,6 +29,7 @@ class Block {
 class Game extends Playground {
   constructor(height = 20, width = 20, hook, numberOfBoom) {
     super(height, width, hook)
+    this.init = true
     this.blockList = []
     this.numberOfBoom = numberOfBoom
     this.createBlock()
@@ -46,12 +47,24 @@ class Game extends Playground {
       })
 
     this.DOM.style.cssText = `height: ${this.height * 40}px; width: ${this.width * 40}px; grid-template-columns: repeat(${this.width}, 1fr); grid-template-rows: repeat(${this.height}, 1fr);`
-    this.DOM.innerHTML = this.blockList.map(ele => (`<div id="block-${ele.id}" class="block" onclick="game.openBlock(${ele.id})"></div>`)).join('')
+    this.DOM.innerHTML = this.blockList.map(ele => (`<div id="block-${ele.id}" class="block"></div>`)).join('')
 
     this.blockList.forEach(ele => {
       document.querySelector(`#block-${ele.id}`).addEventListener('contextmenu', event => {
         event.preventDefault()
         this.mark(ele.id)
+      })
+
+      document.querySelector(`#block-${ele.id}`).addEventListener('click', event => {
+        event.preventDefault()
+
+        if (this.init && ele.type === 'BOOM') {
+          this.blockList[ele.id].type = 'NORMAL'
+          this.blockList[this.blockList.filter(ele => (ele.type === 'NORMAL'))[Math.floor(Math.random() * (this.width * this.height - this.numberOfBoom))].id].type = 'BOOM'
+          this.init = false
+        }
+
+        this.openBlock(ele.id)
       })
     })
   }
